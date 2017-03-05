@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnStepByStep = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -48,7 +48,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.btnStepByStep);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
@@ -58,6 +58,17 @@
             this.splitContainer1.Size = new System.Drawing.Size(876, 535);
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // btnStepByStep
+            // 
+            this.btnStepByStep.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStepByStep.Location = new System.Drawing.Point(726, 12);
+            this.btnStepByStep.Name = "btnStepByStep";
+            this.btnStepByStep.Size = new System.Drawing.Size(135, 49);
+            this.btnStepByStep.TabIndex = 3;
+            this.btnStepByStep.Text = "Oblicz";
+            this.btnStepByStep.UseVisualStyleBackColor = true;
+            this.btnStepByStep.Click += new System.EventHandler(this.btnStepByStep_Click);
             // 
             // label2
             // 
@@ -93,15 +104,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(876, 455);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(719, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 49);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Oblicz";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,7 +126,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStepByStep;
     }
 }
 

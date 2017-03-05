@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProviderRecipientConnector.cs" />
     <Compile Include="Logic.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="Form1.cs">
@@ -62,6 +63,8 @@
     <Compile Include="Provider.cs" />
     <Compile Include="Recipient.cs" />
     <Compile Include="Row.cs" />
+    <Compile Include="Solver.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

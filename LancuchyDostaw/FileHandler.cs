@@ -13,14 +13,7 @@ namespace LancuchyDostaw
                 string recipientsRaw = reader.ReadLine();
                 if (recipientsRaw != null)
                 {
-                    string[] recipientsArr = recipientsRaw.Split(' ');
                     int i = 0;
-                    foreach (var recipient in recipientsArr)
-                    {
-                        recipients.Add(new Recipient(i, Int32.Parse(recipient)));
-                        i++;
-                    }
-
                     string providersRaw = reader.ReadLine();
                     if (providersRaw != null)
                     {
@@ -28,9 +21,17 @@ namespace LancuchyDostaw
                         i = 0;
                         foreach (var provider in providersArr)
                         {
-                            providers.Add(new Provider(i, Int32.Parse(provider)));
+                            if(i == 0 ) providers.Add(new Provider(i, Int32.Parse(provider), 0));
+                            else providers.Add(new Provider(i, Int32.Parse(provider)));
                             i++;
                         }
+                    }
+                    i = 0;
+                    string[] recipientsArr = recipientsRaw.Split(' ');
+                    foreach (var recipient in recipientsArr)
+                    {
+                        recipients.Add(new Recipient(i, Int32.Parse(recipient)));
+                        i++;
                     }
                 }
 
@@ -40,11 +41,10 @@ namespace LancuchyDostaw
                     if (unitCostsRaw != null)
                     {
                         string[] unitCosts = unitCostsRaw.Split(' ');
-                        int j = 0;
-                        foreach (var recipient in recipients)
+                        for (var j = 0; j < recipients.Count; j++)
                         {
-                            recipient.UnitCosts.Add(Int32.Parse(unitCosts[j]));
-                            j++;
+                            var recipient = recipients[j];
+                            recipient.ProviderIdUnitCosts.Add(new ProviderRecipientConnector(i, j, Int32.Parse(unitCosts[j])));
                         }
                     }
                 }

@@ -1,36 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LancuchyDostaw
 {
     // odbiorca
     class Recipient
     {
-        public int AmountOfDemand { get; }
+        public int AmountOfDemand { get;}
+        public int ActualAmountOfDemand { get; set; }
         public int Id { get; }
-        public List<int> UnitCosts { get; set; }
-        public Dictionary<Provider, int> SupplyFromProviderDictionary;
+        public List<ProviderRecipientConnector> ProviderIdUnitCosts { get; set; }
+        public int Beta { get; set; }
 
         public Recipient(int id, int demand)
         {
             Id = id;
             AmountOfDemand = demand;
-            UnitCosts = new List<int>();
+            ActualAmountOfDemand = AmountOfDemand;
+            ProviderIdUnitCosts = new List<ProviderRecipientConnector>();
+            Beta = -9999;
         }
 
         public override string ToString()
         {
-            String UnitCostsStr = "";
-            foreach (var cost in UnitCosts)
+            String unitCostsStr = "";
+            
+            foreach (var cost in ProviderIdUnitCosts)
             {
-                UnitCostsStr += cost + ", ";
+                unitCostsStr += "Dostawca: " + cost.providerId + "Koszt: " + cost.unitCost + ", ";
             }
             return "Id odbiorcy: " + Id +
                 "\nAktualny popyt:" + AmountOfDemand +
-                "\nKoszty jednostkowe: " + UnitCostsStr +
+                "\nKoszty jednostkowe: " + unitCostsStr +
                 "\n-------------";
         }
     }
