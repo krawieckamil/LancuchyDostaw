@@ -6,12 +6,12 @@ namespace LancuchyDostaw
 {
     class FileHandler
     {
-        public static void LoadData(string path, List<Provider> providers, List<Recipient> recipients)
+        public static void LoadData(string path, List<Supplier> providers, List<Customer> customers)
         {
             using (TextReader reader = File.OpenText(path))
             {
-                string recipientsRaw = reader.ReadLine();
-                if (recipientsRaw != null)
+                string customersRaw = reader.ReadLine();
+                if (customersRaw != null)
                 {
                     int i = 0;
                     string providersRaw = reader.ReadLine();
@@ -21,16 +21,16 @@ namespace LancuchyDostaw
                         i = 0;
                         foreach (var provider in providersArr)
                         {
-                            if(i == 0 ) providers.Add(new Provider(i, Int32.Parse(provider), 0));
-                            else providers.Add(new Provider(i, Int32.Parse(provider)));
+                            if (i == 0) providers.Add(new Supplier(Int32.Parse(provider), 0));
+                            else providers.Add(new Supplier(i, Int32.Parse(provider)));
                             i++;
                         }
                     }
                     i = 0;
-                    string[] recipientsArr = recipientsRaw.Split(' ');
-                    foreach (var recipient in recipientsArr)
+                    string[] customersArr = customersRaw.Split(' ');
+                    foreach (var customer in customersArr)
                     {
-                        recipients.Add(new Recipient(i, Int32.Parse(recipient)));
+                        customers.Add(new Customer(i, Int32.Parse(customer)));
                         i++;
                     }
                 }
@@ -41,10 +41,10 @@ namespace LancuchyDostaw
                     if (unitCostsRaw != null)
                     {
                         string[] unitCosts = unitCostsRaw.Split(' ');
-                        for (var j = 0; j < recipients.Count; j++)
+                        for (var j = 0; j < customers.Count; j++)
                         {
-                            var recipient = recipients[j];
-                            recipient.ProviderIdUnitCosts.Add(new ProviderRecipientConnector(i, j, Int32.Parse(unitCosts[j])));
+                            var customer = customers[j];
+                            customer.Connections.Add(new TransportConnection(providers[i], customers[j], Int32.Parse(unitCosts[j]), i, j));
                         }
                     }
                 }
